@@ -24,7 +24,7 @@ SRC_URI = "\
 SRC_URI[md5sum] = "678d242b4eef1754bba6a58642af10bb"
 SRC_URI[sha256sum] = "bab39371d4ab972be1d539a8b10b6cc21f8eafc97f617102e667e82bd32eb234"
 
-inherit autotools update-alternatives
+inherit autotools
 
 EXTRA_OECONF += "--with-pkg-config-dir='${libdir}/pkgconfig:${datadir}/pkgconfig'"
 
@@ -45,8 +45,6 @@ do_install_append_class-native () {
         < ${WORKDIR}/pkg-config-esdk.in > ${B}/pkg-config-esdk
     install -m755 ${B}/pkg-config-esdk ${D}${bindir}/pkg-config-esdk
 }
-
-ALTERNATIVE_${PN} = "pkg-config"
 
 # When using the RPM generated automatic package dependencies, some packages
 # will end up requiring 'pkgconfig(pkg-config)'.  Allow this behavior by
